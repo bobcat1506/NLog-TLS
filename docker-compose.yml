@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - ./tls/:/etc/tls
+    ports:
+      - 27017:27017
+    # command: --tlsMode requireTLS --tlsCAFile /etc/tls/rootCA.pem --tlsCertificateKeyFile /etc/tls/mongodb.pem
+    # command: --tlsMode requireTLS --tlsCertificateKeyFile /etc/tls/mongodb.pem --tlsCertificateKeyFilePassword mongo
+    command: --tlsMode requireTLS --tlsCertificateKeyFile /etc/tls/mongodb.pem 
+      
+  # mongo-express:
+  #   image: mongo-express
+  #   ports: 
+  #     - 8081:8081
